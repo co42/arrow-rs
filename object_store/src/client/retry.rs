@@ -227,10 +227,10 @@ impl RetryExt for reqwest::RequestBuilder {
                     {
                         let mut do_retry = false;
                         if let Some(source) = e.source() {
-                            if let Some(e) = source.downcast_ref::<hyper::Error>() {
-                                if e.is_connect() || e.is_closed() || e.is_incomplete_message() {
+                            if let Some(_e) = source.downcast_ref::<hyper::Error>() {
+                                // if e.is_connect() || e.is_closed() || e.is_incomplete_message() {
                                     do_retry = true;
-                                }
+                                // }
                             }
                         }
 
